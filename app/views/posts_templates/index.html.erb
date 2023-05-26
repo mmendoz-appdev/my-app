@@ -1,0 +1,80 @@
+<div>
+  <div>
+    <h1>
+      Home Feed
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div class="card">
+  <div class="card-header">
+    <h4>What's on your mind?</h4>
+  </div>
+  <div class="card-body">
+
+    <form action="/insert_post" method="post">
+        <div>
+          <label for="caption_box" class="form-label">
+           Title or question:
+          </label>
+
+          <input type="text" id="caption_box" name="query_caption" class="form-control">
+        </div>
+          <p>
+        <div>
+          <label for="text_box" class="form-label">
+            Tell us more:
+          </label>
+
+          <textarea id="text_box" name="query_text" rows="3" class="form-control"></textarea>
+        </div>
+          <p>
+        <div>
+          <input type="hidden" id="owner_id_box" name="query_owner_id" value ="<%= @current_user.id %>">
+        </div>
+
+        <div>
+          <input type="hidden" id="location_box" name="query_location">
+        </div>
+
+        <div>
+          <label for="group_id_box">
+            Where to post:
+          </label>
+
+          <input type="text" id="group_id_box" name="query_group_id" class="form-control">
+        </div>
+        <p>
+        <div>
+          <button class="btn btn-primary">
+            Share post
+          </button>
+        </div>
+    </form>
+  </div>
+</div>
+
+<p>
+ <h2>Latest Posts</h2>
+<div>
+
+<hr>
+
+<% @list_of_posts.each do |a_post| %>
+<ol class="list-group list-group-numbered">
+  <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      <div><h5><%= a_post.caption %></h5></div>
+      <%= a_post.text %>
+      <p>
+      <%= a_post.owner.first_name%>
+      <p>
+      <p><%= time_ago_in_words(a_post.created_at) %> ago</p>
+      <a href="/posts/<%= a_post.id %>">Show details</a>
+    </div>
+    <span class="badge bg-primary rounded-pill"><%= a_post.comments_count %></span>
+  </li>
+</ol>
+<% end %>

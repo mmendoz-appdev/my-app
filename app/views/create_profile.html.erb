@@ -1,0 +1,99 @@
+<h1>Create Your Profile</h1>
+
+<div class="container class="text-start"">
+  <div class="row">
+    <div class="col">
+        <form action="/create_user_profile" method="post">              
+        <div>
+          <label for="first_name_box">First Name</label>
+            <p>
+          <input type="text" id="first_name_box" name="query_first_name" class="form-control" class="text-start">
+        </div>
+              
+        <div>
+          <label for="last_name_box">Last Name</label>
+            <p>
+          <input type="text" id="last_name_box" class="form-control" name="query_last_name">
+        </div>
+              
+        <div>
+          <label for="zipcode_box">Zipcode</label>
+            <p>
+          <input type="text" id="zipcode_box" class="form-control" name="query_zipcode">
+        </div>
+              
+        <div>
+          <label for="bio_box">Tell us about yourself</label>
+            <p>
+          <textarea id="bio_box" name="query_bio" rows="3" class="form-control" placeholder="Write a short bio..."></textarea>
+        </div>
+              
+        <div>
+          <label for="occupation_box">What do you do for a living?</label>
+            <p>
+          <input type="text" id="occupation_box" class="form-control" name="query_occupation" placeholder="Occupation">
+        </div>
+              
+        <div>
+          <label for="religion_box">Do you practice any religion?</label>
+          <p>
+      <select name ="query_religion" class="form-control">
+                  <option> 
+                  
+                  </option>
+                  <option> 
+                  Catholic
+                  </option>
+                  <option> 
+                  Christian
+                  </option>
+                  <option> 
+                  Hindu
+                  </option>
+                  <option> 
+                  Nonreligious
+                  </option>
+                  <option> 
+                  Muslim
+                  </option>
+              </select>
+
+        </div>
+              
+        <div>
+          <label for="military_spouse_box">Are you a military spouse?</label>
+          <input id="military_spouse_box" name="query_military_spouse" type="checkbox" >
+        </div>
+              
+        <div>
+          <label for="special_needs_parent_box">Are you a special needs parent?</label>
+          <input id="special_needs_parent_box" name="query_special_needs_parent" type="checkbox">
+        </div>
+              
+        <div>
+          <label for="nationality_1_box">Where are you from?</label>
+            <p>
+          <input type="text" id="nationality_1_box" class="form-control" name="query_nationality_1" placeholder="Nationality">
+        </div>
+              
+        <div>
+          <label for="language_1_box">What language do you speak at home?</label>
+            <p>
+          <input type="text" id="language_1_box" name="query_language_1" class="form-control" placeholder="Language">
+        </div>
+              
+        <div>
+          <label for="language_2_box">Do you speak any other languages?</label>
+            <p>
+          <input type="text" id="language_2_box" class="form-control" name="query_language_2" placeholder="Language">
+        </div>
+              
+        <div>
+          <label for="profile_picture_box">Upload a profile picture:</label>
+            <p>
+          <input type="file" id="profile_picture_box" name="query_profile_picture">
+        </div>
+           <button class="btn btn-primary" >
+        Create your profile!
+       </button>
+    </div>

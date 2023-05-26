@@ -1,0 +1,79 @@
+<div>
+  <div>
+    <h1>
+      Groups
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div class="card">
+  <div class="card-header">
+    <h4>Create a new group</h4>
+  </div>
+  <div class="card-body">
+
+    <form action="/insert_group" method="post">
+      <div>
+        <label for="name_box" class="form-label">
+          Name:
+        </label>
+
+        <input type="text" id="name_box" name="query_name" class="form-control">
+      </div>
+        <p>
+      <div>
+        <label for="description_box" class="form-label">
+          Description:
+        </label>
+
+        <textarea id="description_box" name="query_description" rows="3" class="form-control"></textarea>
+      </div>
+        <p>
+        <div>
+          <input type="hidden" id="owner_id_box" name="query_owner_id" value = "<%= @current_user.id %>">
+        </div>
+        <p>
+      <div>
+        <input type="checkbox" id="private_box" name="query_private" value="1">
+
+        <label for="private_box">Private</label>
+      </div>
+
+        <div>
+          <button class="btn btn-primary">
+            Create group
+          </button>
+        </div>
+    </form>
+  </div>
+</div>
+
+<p>
+ <h2>Join a Group</h2>
+<div>
+
+<hr>
+
+<% @list_of_groups.each do |a_group| %>
+<ol class="list-group list-group-numbered">
+  <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      <div><h5><%= a_group.name %></h5></div>
+      <%= a_group.description %>
+      <p>
+      <dt>
+        Owner
+      </dt>
+      <%= a_group.owner.first_name %>
+      <p>
+      <dt>
+      <a href="/groups/<%= a_group.id %>">Show details</a>
+      </dt>
+    </div>
+    <span class="badge bg-primary rounded-pill"><%= a_group.members_count %></span>
+  </li>
+</ol>
+<% end %>
+

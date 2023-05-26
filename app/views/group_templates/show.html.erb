@@ -1,0 +1,100 @@
+
+ <div class="card">
+    <div class="card-header">
+      <h4><%= @the_group.name %></h4> 
+    </div>
+    <div class="card-body">
+        <%= @the_group.description %>
+      </dd>
+      <p>
+      <dt>
+        Created by
+      </dt>
+      <dd>
+        <%= @the_group.owner.first_name %>
+      </dd>
+
+      <dt>
+        Private?
+      </dt>
+      <dd>
+        <% if @the_group.private == false %>
+          No
+        <% else %>
+          Yes
+      <% end %>
+      </dd>
+      <dt>
+        Members Count
+      </dt>
+      <dd>
+        <%= @the_group.members_count %>
+      </dd>
+      <form action="/insert_member" method="post">
+      <input id="query_group_id" type="hidden" value="<%= @the_group.id %>" name="query_group_id">
+      <input id="query_member_id" type="hidden" value="<%= @current_user.id  %>" name="query_member_id">
+      <div>
+      <p>
+      </div>
+      <button class="btn btn-primary">Join Group</button>
+      </form>
+      </dd>
+    </dl>
+   </div>
+</div>
+
+
+<% if @current_user.id == @the_group.owner_id %>
+<div>
+  <div>
+  <p>
+    <h2>
+      Edit group
+    </h2>
+  </div>
+</div>
+  <form action="/modify_group/<%= @the_group.id %>"  method="post" >
+        <div>
+          <label for="name_box">
+            Name
+          </label>
+          <input type="text" id="name_box" name="query_name" class="form-control" value="<%= @the_group.name %>">
+        </div>
+          <p>
+        <div>
+          <label for="description_box">
+            Description
+          </label>
+
+          <textarea id="description_box" class="form-control" name="query_description"><%= @the_group.description %></textarea>
+        </div>
+          <p>
+        <div>
+          <input type="checkbox" id="private_box" name="query_private" value="1" <%= "checked" if @the_group.private %>>
+          <input id="query_owner_id" type="hidden" value="<%= @current_user.id  %>" name="query_owner_id">
+          <label for="private_box">
+              Private
+          </label>
+        </div>
+        <button class="btn btn-primary">Update group</button>
+      </form>
+
+<hr>
+
+    <div>
+      <div>
+        <a href="/groups">
+          Go back
+        </a>
+      </div>
+
+    <% if @current_user.id == @the_group.owner.id %>
+        <div>
+          <a href="/delete_group/<%= @the_group.id %>">
+            Delete group
+          </a>
+        </div>
+      </div>
+    <% end %>
+<% end %>
+  

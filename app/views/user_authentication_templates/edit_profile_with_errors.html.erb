@@ -1,0 +1,171 @@
+<div >
+  <h5>
+    Edit User Account
+  </h5>
+
+  <% if @user.errors.any? %>
+  <% @user.errors.full_messages.each do |message| %>
+    <div class="alert">
+      <%= message %>
+    </div>
+  <% end %>
+  <% end %>
+  <div>
+    <form action="/modify_user" method="post">
+              
+      <div>
+        <label for="email_box">Email</label>
+          
+        <input id="email_box" name="query_email" value="<%= @current_user.email %>">
+          
+      </div>
+                                    
+      <div>
+        <label for="first_name_box">First name</label>
+          
+        <input id="first_name_box" name="query_first_name" value="<%= @current_user.first_name %>">
+          
+      </div>
+                      
+      <div>
+        <label for="last_name_box">Last name</label>
+          
+        <input id="last_name_box" name="query_last_name" value="<%= @current_user.last_name %>">
+          
+      </div>
+                      
+      <div>
+        <label for="zipcode_box">Zipcode</label>
+          
+        <input id="zipcode_box" name="query_zipcode" value="<%= @current_user.zipcode %>">
+          
+      </div>
+                      
+      <div>
+        <label for="bio_box">Bio</label>
+          
+        <textarea id="bio_box" name="query_bio" rows="3"><%= @current_user.bio %></textarea> 
+          
+      </div>
+                      
+      <div>
+        <label for="occupation_box">Occupation</label>
+          
+        <input id="occupation_box" name="query_occupation" value="<%= @current_user.occupation %>">
+          
+      </div>
+                      
+      <div>
+        <label for="religion_box">Religion</label>
+          
+        <input id="religion_box" name="query_religion" value="<%= @current_user.religion %>">
+          
+      </div>
+                      
+      <div>
+        <label for="military_spouse_box">Military spouse</label>
+          
+        <input id="military_spouse_box" name="query_military_spouse" type="checkbox" value="1" <%= "checked" if @current_user.military_spouse %>>
+          
+      </div>
+                      
+      <div>
+        <label for="special_needs_parent_box">Special needs parent</label>
+          
+        <input id="special_needs_parent_box" name="query_special_needs_parent" type="checkbox" value="1" <%= "checked" if @current_user.special_needs_parent %>>
+          
+      </div>
+                      
+      <div>
+        <label for="nationality_1_box">Nationality 1</label>
+          
+        <input id="nationality_1_box" name="query_nationality_1" value="<%= @current_user.nationality_1 %>">
+          
+      </div>
+                      
+      <div>
+        <label for="nationality_2_box">Nationality 2</label>
+          
+        <input id="nationality_2_box" name="query_nationality_2" value="<%= @current_user.nationality_2 %>">
+          
+      </div>
+                      
+      <div>
+        <label for="language_1_box">Language 1</label>
+          
+        <input id="language_1_box" name="query_language_1" value="<%= @current_user.language_1 %>">
+          
+      </div>
+                      
+      <div>
+        <label for="language_2_box">Language 2</label>
+          
+        <input id="language_2_box" name="query_language_2" value="<%= @current_user.language_2 %>">
+          
+      </div>
+                      
+      <div>
+        <label for="language_3_box">Language 3</label>
+          
+        <input id="language_3_box" name="query_language_3" value="<%= @current_user.language_3 %>">
+          
+      </div>
+                      
+      <div>
+        <label for="profile_picture_box">Profile picture</label>
+          
+        <input id="profile_picture_box" name="query_profile_picture" value="<%= @current_user.profile_picture %>">
+          
+      </div>
+                      
+      <div>
+        <label for="sent_follow_requests_count_box">Sent follow requests count</label>
+          
+        <input id="sent_follow_requests_count_box" name="query_sent_follow_requests_count" value="<%= @current_user.sent_follow_requests_count %>">
+          
+      </div>
+                      
+      <div>
+        <label for="received_follow_requests_count_box">Received follow requests count</label>
+          
+        <input id="received_follow_requests_count_box" name="query_received_follow_requests_count" value="<%= @current_user.received_follow_requests_count %>">
+          
+      </div>
+                      
+      <div>
+        <label for="own_photos_count_box">Own photos count</label>
+          
+        <input id="own_photos_count_box" name="query_own_photos_count" value="<%= @current_user.own_photos_count %>">
+          
+      </div>
+                      
+      <div>
+        <label for="memberships_count_box">Memberships count</label>
+          
+        <input id="memberships_count_box" name="query_memberships_count" value="<%= @current_user.memberships_count %>">
+          
+      </div>
+                      
+      <div>
+        <label for="children_count_box">Children count</label>
+          
+        <input id="children_count_box" name="query_children_count" value="<%= @current_user.children_count %>">
+          
+      </div>
+              
+      <div>
+        <label for="password_box">Password</label>
+        <input id="password_box" name="query_password" placeholder="Choose a new password..." type="password">
+      </div>
+    
+      <div>
+        <label for="password_confirmation_box">Password Confirmation</label>
+        <input id="password_confirmation_box" name="query_password_confirmation" placeholder="Confirm your new password..." type="password">
+      </div>
+
+      <button>
+        Update account
+      </button>
+    </form>
+  </div>
+</div>

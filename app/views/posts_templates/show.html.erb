@@ -1,0 +1,84 @@
+<div>
+  <div>
+  <div class="card">
+    <div class="card-header">
+      <h4><%= @the_post.caption %></h4>
+    </div>
+    <div class="card-body">
+        <%= @the_post.text %>
+      </dd>
+      <p>
+      <dt>
+        Posted by
+      </dt>
+      <dd>
+        <%= @the_post.owner.first_name %>
+      </dd>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_post.created_at) %> ago
+      </dd>
+    </dl>
+      <table>
+
+<p></p>
+<h5>Comments</h5>
+
+<% @the_post.comments.each do |comment| %>
+<ol class="list-group list-group-numbered">
+  <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      <div><h6><%= comment.commenter.first_name %></h6></div>
+      <%= comment.body %>
+      <p>
+      <p><%= time_ago_in_words(comment.created_at) %> ago</p>
+      <% if @current_user.id == comment.commenter_id %>
+      <a href="/delete_comment/<%= comment.id %>">Delete comment</a>
+      <%end %>
+    </div>
+  </li>
+</ol>
+<% end %>
+
+<p>
+<h5>Add a new comment</h5>
+
+<ol class="list-group list-group-numbered">
+  <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+    <form action="/insert_comment" method="post">
+      <input id="query_post_id" type="hidden" value="<%= @the_post.id %>" name="query_post_id">
+
+      <input id="query_commenter_id" type="hidden" value="<%= @current_user.id  %>" name="query_commenter_id">
+
+      <textarea id="query_body" name="query_body" class="form-control" placeholder="Enter a comment..."></textarea>
+      <div>
+      <p>
+      </div>
+      <button class="btn btn-primary">Post comment</button>
+    </form>
+    </div>
+  </li>
+
+
+<hr>
+
+    <div>
+      <div>
+        <a href="/home">
+          Go back
+        </a>
+      </div>
+
+      <% if @current_user.id == @the_post.owner.id %>
+      <div>
+        <a href="/delete_post/<%= @the_post.id %>">
+          Delete post
+        </a>
+      </div>
+    </div>
+    <% end %>
